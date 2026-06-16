@@ -11,6 +11,13 @@
     "128": "images/useful-forks-128.png"
   },
 
+  "browser_specific_settings": {
+    "gecko": {
+      "id": "useful-forks@useful-forks.github.io",
+      "strict_min_version": "109.0"
+    }
+  },
+
   "host_permissions": [
     "*://github.com/*"
   ],

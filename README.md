@@ -16,6 +16,7 @@ Sometimes, a project might be abandoned, or someone had a different idea of how 
 * [Releases](#releases)
   * [Online tool](#online-tool)
   * [Chrome extension](#chrome-extension)
+  * [Firefox extension](#firefox-extension)
   * [Bookmarklet](#bookmarklet)
 * [How it works](#how-it-works)
 * [Contributing](#contributing)
@@ -26,7 +27,7 @@ Sometimes, a project might be abandoned, or someone had a different idea of how 
 ## Releases
 There are several ways to access the tool.
 
-If you use Chrome, your best option would be to download the [Chrome extension](#chrome-extension). For other browsers, you may want to use the [bookmarklet](#bookmarklet).
+If you use Chrome, your best option would be to download the [Chrome extension](#chrome-extension). Firefox users can use the [Firefox extension](#firefox-extension). For other browsers, you may want to use the [bookmarklet](#bookmarklet).
 
 ### Online tool
 The project is [available online](https://useful-forks.github.io/) for free thanks to GitHub Pages.
@@ -51,6 +52,18 @@ Here is what happens when you click it:
 This button will only appear when you visit GitHub repositories, and clicking it opens a new tab that will automatically trigger a search using [the online tool](#online-tool).
 
 Please note that this project will not be updating the [GitHub Releases](https://github.com/useful-forks/useful-forks.github.io/releases) page anymore. We will now go through Chrome's Web Store to publish updates.
+
+### Firefox extension
+The same [`plugin`](/plugin) folder also works in Firefox: its `manifest.json` includes a `browser_specific_settings.gecko` block (which Chrome ignores), so a single codebase targets both browsers.
+
+To try it without signing (temporary install, removed when Firefox restarts):
+1. Open `about:debugging#/runtime/this-firefox` in Firefox.
+2. Click **Load Temporary Add-on…**.
+3. Select the [`plugin/manifest.json`](/plugin/manifest.json) file.
+
+To build a distributable `.xpi`, zip the **contents** of the `plugin` folder (so that `manifest.json` sits at the root of the archive) and rename it to `useful-forks.xpi`. For a permanent install in regular Firefox, the add-on must be signed through [addons.mozilla.org](https://addons.mozilla.org/developers/) (`web-ext sign`/`web-ext build` from the `plugin` folder is the easiest route).
+
+It behaves identically to the Chrome extension: a "Useful" button is added on GitHub repository pages, and clicking it opens [the online tool](#online-tool) for that repo.
 
 ### Bookmarklet
 
